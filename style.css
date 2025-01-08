@@ -4,3 +4,86 @@ Description: Un thème pour le site de Nathalie Mota
 Version: 1.0
 Author: Shadi A.
 */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ======= HEADER ======= */
+header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    display: flex; /* Enables flexbox */
+    justify-content: space-between; /* Ensures logo on left, menu on right */
+    align-items: center; /* Keeps everything aligned */
+}
+
+/* ======= LOGO (Aligned to Left) ======= */
+.logostyle {
+    width: 360px; /* Fixed logo size */
+    height: auto; /* Keeps aspect ratio */
+    margin-left: 20px; /* Pushes logo away from edge */
+}
+
+/* ======= MENU (Aligned to Right) ======= */
+.menu-main-menu-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns menu to the right */
+    align-items: center;
+    flex-grow: 1;
+    margin-right: 20px; /* Ensures spacing from right edge */
+}
+
+/* Style menu items */
+.menu-main-menu-container ul {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Proper spacing between menu items */
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply new font to menu */
+.menu-main-menu-container ul li a {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.7px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s;
+}
+
+/* Hover effect */
+.menu-main-menu-container ul li a:hover {
+    color: #c00;
+}
+
+/* ======= RESPONSIVE DESIGN ======= */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .logostyle {
+        margin: 0 auto; /* Centers logo on smaller screens */
+    }
+
+    .menu-main-menu-container {
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .menu-main-menu-container ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
