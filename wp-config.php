@@ -1,5 +1,4 @@
 <?php
-define( 'WP_CACHE', true );
 /**
  * The base configuration for WordPress
  *
@@ -21,7 +20,7 @@ define( 'WP_CACHE', true );
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'NathalieMota' );
+define( 'DB_NAME', 'nathalie-mota' );
 
 /** Database username */
 define( 'DB_USER', 'root' );
@@ -49,14 +48,14 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         ']!i1zRaB6%LuIx.D=8ZRZz=O(^;Yp:>]Xan[85q<tyxzFo.#Y|Z Re())~U#RUEr' );
-define( 'SECURE_AUTH_KEY',  'U;x!]-;t}KtC)~Qkf^PmD,`M{5:>bZsEElCE)rZ,R2?h`Azo=CaMN&u8}!xtY0Tf' );
-define( 'LOGGED_IN_KEY',    '_^UBlOECI^l &8}aga,^ya9n7N/<tJW8uH))Tx#bb7/9`W &Y3O$<$.$K7mE/YLb' );
-define( 'NONCE_KEY',        'Nx&z2)S)`y9}D#]VD{}uBHNmnr8JGJ5lYNhidK;PuAU=yRTItD1?%K54ubeGTDAF' );
-define( 'AUTH_SALT',        'hkDHA`U!qX$ep]j2.f5/k?,+9eCdi|R[&?w.GYM_2&lCIh Ox;xwSr$=nYbztLU,' );
-define( 'SECURE_AUTH_SALT', '&NkoRrk~vTU2QzbS+)a>-W/xu&ylU*R):Xp|xNAf/r6wpn{8FQ^@4]tw5 [*5N1A' );
-define( 'LOGGED_IN_SALT',   'o!#>0NA=tpK,<lpv$[Vucrvup_soDOP{I00[?JWue>g!-Z~if~?MSU<ZQq51bv:=' );
-define( 'NONCE_SALT',       'IfRYDf[?L#$$F,%66XZJ>{1gnffr*Y9TvaP=dASP.d1@S5O2u-..nh>^qG2B!,Pv' );
+define( 'AUTH_KEY',         'Q>xgHADpWOW5J84guME8wI>3HXowC~$/Qko~46JB_}+WIi4P:5aapNoG/LGRl;&l' );
+define( 'SECURE_AUTH_KEY',  '3`qJ]y9K]NFN-9brp*T?=HSzPh_7^psgPT=VLs.XV46Hi{HF*6xu@*mBtbvjGJp6' );
+define( 'LOGGED_IN_KEY',    '8//NW6BWg zg!qR+/9Osmr>Lr.sf7^>S2o1v/(4JVJt*W#Oc!D:muRXfUikY]zC%' );
+define( 'NONCE_KEY',        'o!+I7%I~@!F0~`Gzx,/k&X#x~~xb)ba/oQ3X$t%`<Xa95SEUp.-w,j3$&6@g/v/I' );
+define( 'AUTH_SALT',        'yH*sm!m>*BgbdsA)<VCwQW(dM MJBj]N3:5JhvC6k$Nj8#5E6O}N)Y4mmVETYAb2' );
+define( 'SECURE_AUTH_SALT', 'oS4QghM9Lh_l1>kX;YJoGr !spUE<W}`Ws;/AubJ,v8Vko7kL5?yh,$tGw-XU=)x' );
+define( 'LOGGED_IN_SALT',   'fR_CFq+LTA[:;dk}x<E3|]e=]46`*KP&o3J}UtJU(H21_UKw`VLV@Xg]yzF5kss=' );
+define( 'NONCE_SALT',       's,2ReR?FX*Zg2BCPm&BYe1-At} av:&U<vd5jQJuWWgh0rd1. giA3j2 JZ_2,5c' );
 
 /**#@-*/
 

@@ -64,6 +64,40 @@ header {
     color: #c00;
 }
 
+/* ======= FOOTER MENU ======= */
+.footer-menu {
+    background: #222; /* Dark background for contrast */
+    padding: 15px 0;
+    text-align: center;
+}
+
+.footer-menu ul {
+    display: flex;
+    justify-content: center; /* Centers items */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Controls spacing between items */
+}
+
+.footer-menu li {
+    display: inline-block;
+}
+
+.footer-menu a {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-menu a:hover {
+    text-decoration: underline;
+    color: #c00; /* Matches header menu hover */
+}
+
 /* ======= RESPONSIVE DESIGN ======= */
 @media (max-width: 768px) {
     header {
@@ -86,9 +120,15 @@ header {
         flex-direction: column;
         gap: 15px;
     }
+
+    /* Footer menu on mobile */
+    .footer-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
-/* Contact Modal Styling */
+/* ======= CONTACT MODAL STYLING ======= */
 .modal {
     display: none;
     position: fixed;
@@ -115,7 +155,6 @@ header {
 .modal-header {
     width: 100%;
     display: flex;
-    
     justify-content: center;
     align-items: center;
     position: relative;
@@ -130,4 +169,3 @@ header {
     font-size: 30px;
     cursor: pointer;
 }
-
