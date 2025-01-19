@@ -10,7 +10,7 @@
         <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Contact header.png" alt="Image Modal">
 
         <!-- Formulaire de contact généré par le shortcode de Contact Form 7 -->
-        <?php echo do_shortcode('[contact-form-7 id="4ebebfb" title="Contact form 1"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="2cc0601" title="Modal Contact 1"]'); ?>
     </div>
 
 </div>
