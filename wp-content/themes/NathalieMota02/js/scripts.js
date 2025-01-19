@@ -282,4 +282,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 });   
         
+//Modal 
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the modal element
+    var headerModal = document.getElementById('myModal');
+    if (!headerModal) {
+        console.error('Modal element not found.');
+        return;
+    }
 
+    // Select the Contact menu item
+    var contactMenuItem = document.querySelector('.menu-item-27');
+
+    if (contactMenuItem) {
+        // Add a click event listener to the menu item
+        contactMenuItem.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent navigation
+            headerModal.style.display = 'block'; // Show the modal
+        });
+    }
+
+    // Close the modal when clicking outside the modal content
+    window.addEventListener('click', function (event) {
+        if (event.target === headerModal) {
+            headerModal.style.display = 'none'; // Hide the modal
+        }
+    });
+});
