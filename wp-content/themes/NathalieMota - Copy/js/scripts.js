@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Gérer le clic sur un élément de la liste des filtres
-        $('.filter-list select').on('change', function() {
+        $('.filter-list li').on('click', function() {
 
             $(this).siblings().removeClass('selected'); // Désélectionner les autres éléments
             $(this).addClass('selected'); // Sélectionner l'élément cliqué

@@ -1,0 +1,125 @@
+/* H1 */
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* H2 */
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* DESCCRIPTION + H3 */
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* P */
+
+@font-face {
+    font-family: 'Poppins Light';
+    src: url('fonts/Poppins/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* MEDIA */
+
+@media only screen and (min-width: 768px) {
+    /* Paragraphs */
+    p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 21px;
+    }
+
+    /* Description */
+    .description {
+        font-family: 'Space Mono', monospace;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+    }
+
+    /* H3 */
+    h3 {
+        font-family: 'Space Mono', monospace;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 27px;
+    }
+
+    /* H2 */
+    h2 {
+        font-family: 'Space Mono', monospace;
+        font-size: 66px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 58px;
+    }
+
+    /* H1 */
+    h1 {
+        font-family: 'Space Mono', monospace;
+        font-size: 96px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: 142px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Paragraphs */
+    p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 21px;
+    }
+
+    /* Description */
+    .description {
+        font-family: 'Space Mono', monospace;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+    }
+
+    /* H3 */
+    h3 {
+        font-family: 'Space Mono', monospace;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 27px;
+    }
+
+    /* H2 */
+    h2 {
+        font-family: 'Space Mono', monospace !important;
+        font-size: 36px!important;
+        font-style: italic!important;
+        font-weight: 400!important;
+        line-height: 58px!important;
+    }
+
+    /* H1 */
+    h1 {
+        font-family: 'Space Mono', monospace;
+        font-size: 28px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: 142px;
+    }
+}

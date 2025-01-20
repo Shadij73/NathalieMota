@@ -1,47 +1,43 @@
 <!-- Filtres -->
 <div class="filters-and-sort">
     <!-- Filtre par Catégorie -->
-    <div class="filter-list">
-        
+    <div class="filter-list" id="category-filter-list">
+        <div class="filter-container">
+            <p>Catégories</p>
+            <!-- Icône du chevron pour l'interaction déroulante -->
+            <img src="<?php echo get_template_directory_uri(); ?>/img_logo/chevron.png" class="chevron-icon"> 
+        </div>
         <!-- Liste des options de catégories récupérées depuis WordPress -->
-     
-       <?php $photo_categories = get_terms('categorie');
-       ?>
-        <select name= "category-list" id="category-filter-list">
-            <option value= "">
-            Catégories
-            </option>
-        <?php
-        foreach ($photo_categories as $category) {
-                echo '<option value="' . $category->slug . '">' . $category->name . '</option>';
+        <ul>
+            <li data-value="ALL"></li> <!-- Option pour sélectionner toutes les catégories -->
+            <?php
+            // Boucle pour afficher toutes les catégories disponibles
+            $photo_categories = get_terms('categorie');
+            foreach ($photo_categories as $category) {
+                echo '<li data-value="' . $category->slug . '">' . $category->name . '</li>';
             }
-        ?>
-
-        </select>
-
-       
+            ?>
+        </ul>
     </div>
 
     <!-- Filtre par Format -->
-     <div class="filter-list">
-        
-        <!-- Liste des options de catégories récupérées depuis WordPress -->
-     
-       <?php $photo_format = get_terms('format');
-       ?>
-        <select name= "format-list" id="format-filter-list">
-            <option value= "">
-            format
-            </option>
-        <?php
-        foreach ($photo_format as $format) {
-                echo '<option value="' . $format->slug . '">' . $format->name . '</option>';
+    <div class="filter-list" id="format-filter-list">
+        <div class="filter-container">
+            <p>Formats</p>
+            <!-- Icône du chevron pour l'interaction déroulante -->
+            <img src="<?php echo get_template_directory_uri(); ?>/img_logo/chevron.png" class="chevron-icon"> 
+        </div>
+        <!-- Liste des options de formats récupérées depuis WordPress -->
+        <ul>
+            <li data-value="ALL"></li> <!-- Option pour sélectionner tous les formats -->
+            <?php
+            // Boucle pour afficher tous les formats disponibles
+            $photo_formats = get_terms('format');
+            foreach ($photo_formats as $format) {
+                echo '<li data-value="' . $format->slug . '">' . $format->name . '</li>';
             }
-        ?>
-
-        </select>
-
-       
+            ?>
+        </ul>
     </div>
 
     <!-- Filtre pour Trier par date -->
