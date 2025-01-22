@@ -129,45 +129,54 @@ document.addEventListener('DOMContentLoaded', function () {
     $(document).on('click', '.fullscreen-icon', function (event) {
         event.preventDefault();
         event.stopPropagation();
-        refreshImagesArray();
-        const index = $('.fullscreen-icon').index(this);
-        updateLightbox(index);
-        $('#myLightbox').css('display', 'block');
+
+        refreshImagesArray(); // Rafraîchir le tableau d'images
+        currentIndex = $('.fullscreen-icon').index(this); // Définir l'index actuel en fonction de l'icône cliquée
+        updateLightbox(currentIndex); // Mettre à jour le lightbox pour afficher l'image cliquée
+        $('#myLightbox').css('display', 'block'); // Afficher le lightbox
     });
 
-    let images = [];
+    let images = []; // Tableau pour stocker les images
+    let currentIndex = 0; // Index actuel du lightbox
+
+    // Fonction pour rafraîchir le tableau d'images
     function refreshImagesArray() {
         images = $('.fullscreen-icon').map(function () {
             return {
-                src: $(this).data('src'),
-                reference: $(this).siblings('.photo-info').find('.photo-info-left p').text(),
-                category: $(this).siblings('.photo-info').find('.photo-info-right p').text(),
+                src: $(this).data('src'), // Source de l'image
+                reference: $(this).siblings('.photo-info').find('.photo-info-left p').text(), // Référence de l'image
+                category: $(this).siblings('.photo-info').find('.photo-info-right p').text(), // Catégorie de l'image
             };
         }).get();
     }
 
+    // Fonction pour mettre à jour le lightbox avec l'image actuelle
     function updateLightbox(index) {
-        const totalImages = images.length;
-        const currentIndex = (index + totalImages) % totalImages;
-        const imageData = images[currentIndex];
+        const totalImages = images.length; // Nombre total d'images
+        currentIndex = (index + totalImages) % totalImages; // Assurer que l'index tourne en boucle
+        const imageData = images[currentIndex]; // Obtenir les données de l'image actuelle
 
-        $('#myLightbox .lightbox__container').html(`<img src="${imageData.src}">`);
+        // Mettre à jour le contenu du lightbox
+        $('#myLightbox .lightbox__container').html(`<img src="${imageData.src}" alt="Lightbox Image">`);
         $('#myLightbox .photo-info-left-lightbox').html(`<p>${imageData.reference}</p>`);
         $('#myLightbox .photo-info-right-lightbox').html(`<p>${imageData.category}</p>`);
     }
 
+    // Écouteur pour fermer le lightbox
     $('.lightbox__close').on('click', function () {
-        $('#myLightbox').css('display', 'none');
+        $('#myLightbox').css('display', 'none'); // Masquer le lightbox
     });
 
+    // Écouteur pour naviguer vers l'image précédente
     $('.lightbox__prev').on('click', function (event) {
         event.preventDefault();
-        updateLightbox(images.indexOf(currentImage) - 1);
+        updateLightbox(currentIndex - 1); // Passer à l'image précédente
     });
 
+    // Écouteur pour naviguer vers l'image suivante
     $('.lightbox__next').on('click', function (event) {
         event.preventDefault();
-        updateLightbox(images.indexOf(currentImage) + 1);
+        updateLightbox(currentIndex + 1); // Passer à l'image suivante
     });
 
     // FILTRER LES POSTS
@@ -212,8 +221,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-  
-// Modal 
+
+// Modal
 document.addEventListener('DOMContentLoaded', function () {
     const headerModal = document.getElementById('myModal');
     if (!headerModal) {
