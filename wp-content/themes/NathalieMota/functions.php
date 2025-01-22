@@ -1,16 +1,11 @@
 <?php
 
-// Register header menu
-function register_header_menu() {
+// Register header and footer menus
+function register_menus() {
     register_nav_menu('header-menu', __('Main Menu', 'text-domain'));
-}
-add_action('after_setup_theme', 'register_header_menu');
-
-// Register footer menu
-function register_footer_menu() {
     register_nav_menu('footer-menu', __('Footer Menu', 'text-domain'));
 }
-add_action('after_setup_theme', 'register_footer_menu');
+add_action('after_setup_theme', 'register_menus');
 
 // Enqueue custom styles
 function enqueue_custom_styles() {
@@ -22,17 +17,21 @@ function enqueue_custom_styles() {
         'css/single.css',
         'css/index.css',
         'css/liste-photo.css',
-        'css/lightbox.css'
+        'css/lightbox.css',
     ];
     foreach ($styles as $style) {
-        wp_enqueue_style('custom-theme-' . md5($style), get_template_directory_uri() . '/' . $style, [], '1.0', 'all');
+        wp_enqueue_style('custom-' . md5($style), get_template_directory_uri() . '/' . $style, [], '1.0', 'all');
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 
-// Enqueue custom scripts
+// Enqueue custom scripts with AJAX nonce
 function enqueue_custom_scripts() {
     wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/js/scripts.js', ['jquery'], '1.0', true);
+    wp_localize_script('custom-scripts', 'ajax_data', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('load_more_posts_nonce'),
+    ]);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
@@ -59,12 +58,12 @@ function load_more_posts() {
         'offset'         => $offset,
     ];
 
-    $custom_posts_query = new WP_Query($args);
+    $query = new WP_Query($args);
 
-    if ($custom_posts_query->have_posts()) {
+    if ($query->have_posts()) {
         ob_start();
-        while ($custom_posts_query->have_posts()) {
-            $custom_posts_query->the_post();
+        while ($query->have_posts()) {
+            $query->the_post();
             include locate_template('template-parts/photo-thumbnail.php');
         }
         wp_reset_postdata();
@@ -72,7 +71,6 @@ function load_more_posts() {
     } else {
         wp_die();
     }
-    die();
 }
 add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
