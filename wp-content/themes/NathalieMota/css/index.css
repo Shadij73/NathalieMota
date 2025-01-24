@@ -1,0 +1,140 @@
+.hero {
+    position: relative;
+    height: 962px; 
+}
+
+.hero-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    position: relative;
+    background-image: url('/img_logo/background-hero.jpeg'); 
+}
+
+.hero-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.mentions-rgpd {
+    margin-left: 146px;
+    margin-right: 146px;
+
+}
+
+.mentions-rgpd h2 {
+    text-transform: uppercase;
+}
+
+.mentions-rgpd h3 {
+    text-transform: uppercase;
+}
+
+.mentions-rgpd p {
+    text-transform: none;
+    font-family: 'Poppins Light';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.73px;
+}
+
+
+
+body {
+    font-family: 'Space Mono', sans-serif;
+    color: #000;
+    background-color: #FFFFFF;
+}
+
+.filters-and-sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1126px;
+    margin: 50px auto 0;
+}
+
+.filter-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 43px;
+    padding: 0 18px;
+    border-radius: 8px;
+    border: 1.3px solid #B8BBC2;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: capitalize;
+    cursor: pointer;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.filter-list:hover {
+    border-color: #215AFF;
+}
+
+.filter-list select {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.view-all-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#load-more-posts {
+    width: 272px;
+    height: 50px;
+    background-color: #D8D8D8;
+    color: #000;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-family: "Space Mono", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    border: none;
+}
+
+#load-more-posts:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .filters-and-sort {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .filter-list {
+        width: 220px;
+        margin-bottom: 20px;
+    }
+
+    .view-all-button {
+        margin-top: 30px;
+    }
+}

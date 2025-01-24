@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title> <!-- Dynamic Title -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nathalie Mota</title>
+
+    <!-- Initialize JavaScript variable 'ajaxurl' -->
+    <script type="text/javascript">
+        var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+    </script>
+
+    <!-- Theme stylesheets -->
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/fonts.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/header.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/footer.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/index.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/liste-photo.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/lightbox.css">
+    <style>
+        :root {
+            --chemin-image-chevron: url('<?php echo get_template_directory_uri(); ?>/img_logo/chevron.png');
+        }
+    </style>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- WordPress head hook -->
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
-<header>
-    <div class="logo">
-        <a href="<?php echo home_url(); ?>">
-            <img class="logostyle" src="<?php echo get_template_directory_uri(); ?>/assets/logo.png" alt="Logo">
-        </a>
-    </div>
-    <nav>
-        <?php
-        wp_nav_menu(array(
-            'theme_location' => 'main-menu',
-            'container'      => 'div',
-            'container_class' => 'menu-main-menu-container',
-            'menu_class'     => 'menu',
-        ));
-        ?>
-    </nav>
-</header>
+<body>
+    <header>
+        <div class="header-logo">
+            <?php
+            $custom_logo_id = get_theme_mod('custom_logo');
+            $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+            ?>
+            <a href="<?php echo home_url(); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="mobile-menu-button" id="open-fullscreen-menu-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="header-menu">
+            <div class="close-button-container">
+                <div class="logo-container">
+                    <a href="<?php echo home_url(); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Logo.png" alt="Site Logo">
+                    </a>
+                </div>
+                <button id="close-fullscreen-menu-button" class="close-button">X</button>
+            </div>
+
+            <?php
+            wp_nav_menu([
+                'theme_location' => 'header-menu',
+                'container'      => false
+            ]);
+            ?>
+
+            <!-- Modal -->
+            <?php include 'templates_part/modal.php'; ?>
+        </nav>
+    </header>
