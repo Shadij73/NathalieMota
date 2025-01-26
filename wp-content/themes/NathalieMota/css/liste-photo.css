@@ -33,8 +33,6 @@
     object-fit: cover;  
 }
 
-/* OVERLAY */
-
 .thumbnail-overlay {
     position: absolute;
     top: 0; 
@@ -116,8 +114,6 @@
     color: #ffffff;  
     background-color: #000000;  
 }
-
-/* FILTRE TRI */
 
 .filter-container{
     position: relative;
@@ -226,8 +222,6 @@
 #date-sort-list{
     margin-left: 320px;
 }
-
-/* MEDIA */
 
 @media (max-width: 768px) {
 

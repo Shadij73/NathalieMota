@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nathalie Mota</title>
 
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
     <!-- Initialize JavaScript variable 'ajaxurl' -->
     <script type="text/javascript">
         var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";

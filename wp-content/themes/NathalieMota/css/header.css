@@ -1,7 +1,7 @@
 body {
     background-color: #FFFFFF;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 main {
@@ -18,8 +18,8 @@ main {
 header {
     display: flex;
     justify-content: space-between;
-    height: 80px;
     align-items: center;
+    height: 80px;
     background-color: #fff;
     margin-left: 149px;
     margin-right: 149px;
@@ -282,5 +282,3 @@ header {
         display: none;
     }
 }
-
-
