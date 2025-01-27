@@ -33,7 +33,6 @@
     </div>
 
     <div class="filter-list" id="date-sort-list">
-        <label for="date-sort">Trier par :</label>
         <select id="date-sort" name="date-sort">
             <option value="ALL">Aucun tri</option>
             <option value="DESC">À partir des plus récentes</option>
@@ -86,8 +85,9 @@
         ?>
     </div>
     <div class="view-all-button">
-        <button id="load-more-posts" data-ajaxurl="<?php echo esc_url(admin_url('admin-ajax.php')); ?>" data-nonce="<?php echo wp_create_nonce('load_more_posts_nonce'); ?>">
-            Charger plus
-        </button>
-    </div>
+    <button id="load-more-posts"
+            data-ajaxurl="<?php echo esc_url(admin_url('admin-ajax.php')); ?>"
+            data-nonce="<?php echo wp_create_nonce('load_more_posts_nonce'); ?>">
+        Charger plus
+    </button>
 </div>

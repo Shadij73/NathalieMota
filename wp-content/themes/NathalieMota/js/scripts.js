@@ -95,36 +95,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // CHARGER PLUS DE POSTS
     jQuery(function ($) {
-        let page = 1;
-
+        let page = 1; // Start with the first page
+    
         $('#load-more-posts').on('click', function () {
-            page++;
-            loadMorePosts(page);
+            page++; // Increment the page number
+            loadMorePhotos(page);
         });
-
-        function loadMorePosts(pageNumber) {
+    
+        function loadMorePhotos(pageNumber) {
             const ajaxurl = $('#load-more-posts').data('ajaxurl');
             const nonce = $('#load-more-posts').data('nonce');
-
+    
             $.ajax({
                 url: ajaxurl,
                 type: 'POST',
                 data: {
-                    action: 'load_more_posts',
+                    action: 'load_more_photos', // Matches the action in functions.php
                     page: pageNumber,
                     security: nonce,
                 },
-                success: function (data) {
-                    if (data) {
-                        $('.thumbnail-container-accueil').append(data);
+                success: function (response) {
+                    if (response.success) {
+                        $('.thumbnail-container-accueil').append(response.data); // Append new photos
                     } else {
-                        $('#load-more-posts').text('Aucune photo supplémentaire à charger');
+                        $('#load-more-posts').text('Aucune photo supplémentaire à charger').prop('disabled', true);
                     }
+                },
+                error: function () {
+                    alert('Erreur lors du chargement des photos.');
                 },
             });
         }
     });
-
+    
     // LIGHTBOX
     $(document).on('click', '.fullscreen-icon', function (event) {
         event.preventDefault();
