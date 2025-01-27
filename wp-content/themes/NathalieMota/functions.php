@@ -28,9 +28,9 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 // Enqueue custom scripts with AJAX nonce
 function enqueue_custom_scripts() {
     wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/js/scripts.js', ['jquery'], '1.0', true);
-    wp_localize_script('custom-scripts', 'ajax_data', [
+    wp_localize_script('custom-scripts', 'ajax_object', [
         'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('load_more_posts_nonce'),
+        'nonce'    => wp_create_nonce('ajax_nonce'),
     ]);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
@@ -132,3 +132,53 @@ function load_more_photos() {
 
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
+
+
+function load_filtered_posts() {
+    check_ajax_referer('ajax_nonce', 'nonce');
+
+    $category = sanitize_text_field($_POST['categorie']);
+
+    $args = array(
+        'post_type'      => 'photo',
+        'posts_per_page' => -1,
+'tax_query'      => array(
+        array(
+            'taxonomy' => 'categor',
+            'field'    => 'slug',
+            'terms'    => $category_slug,
+        ),
+    ),    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        ob_start();
+        while ($query->have_posts()) {
+            $query->the_post(); ?>
+            <div class="custom-post-thumbnail">
+            <a href="<?php the_permalink(); ?>">
+                <?php if (has_post_thumbnail()) : ?>
+                    <div class="thumbnail-wrapper">
+                        <?php the_post_thumbnail(); ?>
+                        <div class="thumbnail-overlay">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/Icon_eye.png'); ?>" alt="Icône d'oeil">
+                            <button class="fullscreen-icon" data-src="<?php echo esc_url(wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]); ?>">
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/Icon_fullscreen.png'); ?>" alt="Icône de plein écran">
+                            </button>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </a>
+        </div>
+        <?php
+}
+        wp_reset_postdata();
+        $data = ob_get_clean();
+        wp_send_json_success($data);
+    } else {
+        wp_send_json_error();
+    }
+}
+
+add_action('wp_ajax_load_filtered_posts', 'load_filtered_posts');

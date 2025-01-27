@@ -1,35 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     // MENU BURGER
     $('#open-fullscreen-menu-button').on('click', function (e) {
-        e.stopPropagation(); // Empêcher la propagation de l'événement
-        $('header').toggleClass('mobile-menu-opened'); // Basculer l'ouverture/fermeture du menu
-        console.log('Bouton cliqué!'); // Journal pour débogage
+        e.stopPropagation();
+        $('header').toggleClass('mobile-menu-opened');
     });
 
     $('#close-fullscreen-menu-button').on('click', function () {
-        $('header').removeClass('mobile-menu-opened'); // Fermer le menu
-        console.log('Menu fermé!'); // Journal pour débogage
+        $('header').removeClass('mobile-menu-opened');
     });
 
     $(document).on('click', function (event) {
         if (!$('header').has(event.target).length && !$('header').is(event.target)) {
-            $('header').removeClass('mobile-menu-opened'); // Fermer le menu si un clic est détecté en dehors
+            $('header').removeClass('mobile-menu-opened');
         }
     });
 
     // MODAL HEADER
     const headerModal = document.getElementById('myModal');
     const headerBtn = document.getElementById('open-modal-button-header');
-
     if (headerModal && headerBtn) {
         headerBtn.addEventListener('click', function () {
-            headerModal.style.display = 'block'; // Afficher le modal
+            headerModal.style.display = 'block';
         });
 
         window.addEventListener('click', function (event) {
             if (event.target === headerModal) {
-                headerModal.style.display = 'none'; // Masquer le modal si un clic est détecté en dehors
+                headerModal.style.display = 'none';
             }
         });
     }
@@ -185,21 +181,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // FILTRER LES POSTS
     jQuery(function ($) {
         function loadFilteredPosts() {
-            const category = $('#category-filter-list .selected').data('value');
-            const format = $('#format-filter-list .selected').data('value');
-            const sort = $('#date-sort-list .selected').data('value');
-            const ajaxurl = $('#load-more-posts').data('ajaxurl');
-            const nonce = $('#load-more-posts').data('nonce');
-
+            const category = $('#category-filter-list').val();
+            const format = $('#format-filter-list').val();
+            const sort = $('#date-sort-list').val();
+            console.log(category,ajaxurl);
             $.ajax({
-                url: ajaxurl,
+                url: ajax_object.ajax_url,
                 type: 'POST',
                 data: {
                     action: 'load_filtered_posts',
-                    category,
-                    format,
-                    sort,
-                    security: nonce,
+                    categorie:category,
+                    nonce: ajax_object.nonce,
                 },
                 success: function (data) {
                     $('.thumbnail-container-accueil').html(data);

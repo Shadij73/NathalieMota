@@ -5,7 +5,7 @@
         $photo_categories = get_terms('categorie');
         ?>
         <select name="category-list" id="category-filter-list">
-            <option value="ALL">Catégories</option>
+            <option value="ALL">CATÉGORIES</option>
             <?php
             if (!is_wp_error($photo_categories) && !empty($photo_categories)) {
                 foreach ($photo_categories as $category) {
@@ -21,7 +21,7 @@
         $photo_formats = get_terms('format');
         ?>
         <select name="format-list" id="format-filter-list">
-            <option value="ALL">Formats</option>
+            <option value="ALL">FORMATS</option>
             <?php
             if (!is_wp_error($photo_formats) && !empty($photo_formats)) {
                 foreach ($photo_formats as $format) {
@@ -34,7 +34,7 @@
 
     <div class="filter-list" id="date-sort-list">
         <select id="date-sort" name="date-sort">
-            <option value="ALL">Aucun tri</option>
+            <option value="ALL">TRIER PAR</option>
             <option value="DESC">À partir des plus récentes</option>
             <option value="ASC">À partir des plus anciennes</option>
         </select>

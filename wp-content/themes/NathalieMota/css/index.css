@@ -1,6 +1,6 @@
 .hero {
     position: relative;
-    height: 962px; 
+    height: 962px;
 }
 
 .hero-image {
@@ -8,7 +8,7 @@
     background-position: center;
     height: 100%;
     position: relative;
-    background-image: url('/img_logo/background-hero.jpeg'); 
+    background-image: url('/img_logo/background-hero.jpeg');
 }
 
 .hero-image img {
@@ -26,10 +26,7 @@
     margin-right: 146px;
 }
 
-.mentions-rgpd h2 {
-    text-transform: uppercase;
-}
-
+.mentions-rgpd h2,
 .mentions-rgpd h3 {
     text-transform: uppercase;
 }
@@ -50,16 +47,17 @@ body {
 
 .filters-and-sort {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Align filters to the left */
     align-items: center;
     max-width: 1126px;
-    margin: 50px auto 0;
+    margin: 50px auto 30px;
+    gap: 20px; /* Add space between filter elements */
 }
 
 .filter-list {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align content inside the filter box to the left */
     width: 260px;
     height: 43px;
     padding: 0 18px;
@@ -73,10 +71,11 @@ body {
     cursor: pointer;
     background-color: #ffffff;
     box-sizing: border-box;
+    text-align: left; /* Align text inside the box to the left */
 }
 
-.filter-list:hover {
-    border-color: #215AFF;
+.filter-list.select-date-sort {
+    margin-left: auto; /* Push the date-sort filter to the right */
 }
 
 .filter-list select {
@@ -86,9 +85,14 @@ body {
     border: none;
     font-size: inherit;
     font-family: inherit;
-    text-align: center;
+    text-align: left; /* Align dropdown text to the left */
     cursor: pointer;
     outline: none;
+    padding-left: 8px; /* Add padding for dropdown text */
+}
+
+.filter-list:hover {
+    border-color: #215AFF;
 }
 
 .view-all-button {
@@ -121,14 +125,18 @@ body {
 
 @media (max-width: 768px) {
     .filters-and-sort {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stack filters vertically on smaller screens */
+        align-items: flex-start; /* Align filters to the left */
         margin-top: 30px;
     }
 
     .filter-list {
         width: 220px;
         margin-bottom: 20px;
+    }
+
+    .filter-list.select-date-sort {
+        margin-left: 0; /* Reset margin for smaller screens */
     }
 
     .view-all-button {
