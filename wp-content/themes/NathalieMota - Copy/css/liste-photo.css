@@ -1,0 +1,110 @@
+.custom-post-thumbnails {
+    max-width: 1126px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.thumbnail-container-accueil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px; /* Space between thumbnails */
+    margin-top: 20px;
+    margin-left: 100px; /* Increased left margin for wider spacing */
+    margin-right: 100px; /* Increased right margin for wider spacing */
+}
+
+.custom-post-thumbnail {
+    flex-basis: calc(50% - 24px); /* Two columns */
+    margin-bottom: 24px; /* Space between rows */
+    border-radius: 8px; /* Smooth corners */
+}
+
+.thumbnail-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 66%; /* Aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.thumbnail-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps image proportional */
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.thumbnail-wrapper:hover .thumbnail-overlay {
+    opacity: 1;
+}
+
+.thumbnail-overlay img {
+    width: 46px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.view-all-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+#load-more-posts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 272px;
+    height: 50px;
+    background-color: #D8D8D8;
+    color: #000;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    font-family: "Space Mono", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    border: none;
+    margin-top: 20px;
+}
+
+#load-more-posts:hover {
+    color: #fff;
+    background-color: #000;
+}
+
+@media (max-width: 768px) {
+    .thumbnail-container-accueil {
+        flex-direction: column; /* Stack thumbnails vertically */
+        gap: 20px; /* Adjust spacing for smaller screens */
+        margin-left: 40px; /* Wider left margin for smaller screens */
+        margin-right: 40px; /* Wider right margin for smaller screens */
+    }
+
+    .custom-post-thumbnail {
+        flex-basis: 100%; /* Make thumbnails full-width for smaller screens */
+    }
+}

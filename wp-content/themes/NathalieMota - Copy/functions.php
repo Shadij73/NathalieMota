@@ -95,43 +95,25 @@ function load_more_posts() {
 add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
 
-// Load filtered posts via AJAX
-function load_filtered_posts() {
-    check_ajax_referer('ajax_nonce', 'nonce');
-
-    // Initialize tax_query array
-    $tax_query = ['relation' => 'AND'];
-
-    // Category Filter
-    if (!empty($_POST['categorie'])) {
-        $category = sanitize_text_field($_POST['categorie']);
-        $tax_query[] = [
-            'taxonomy' => 'categorie', // Make sure this is the correct taxonomy
-            'field'    => 'slug',
-            'terms'    => $category,
-        ];
+// Load more photos via AJAX
+function load_more_photos() {
+    if (!isset($_POST['page']) || !isset($_POST['security'])) {
+        wp_send_json_error('Invalid parameters');
+        exit;
     }
 
-    // Format Filter
-    if (!empty($_POST['format'])) {
-        $format = sanitize_text_field($_POST['format']);
-        $tax_query[] = [
-            'taxonomy' => 'format', // Make sure this is the correct taxonomy
-            'field'    => 'slug',
-            'terms'    => $format,
-        ];
+    if (!wp_verify_nonce($_POST['security'], 'load_more_posts_nonce')) {
+        wp_send_json_error('Invalid nonce');
+        exit;
     }
 
-    // Sorting
-    $order = isset($_POST['sort']) && in_array($_POST['sort'], ['ASC', 'DESC']) ? sanitize_text_field($_POST['sort']) : 'DESC';
-
-    // WP_Query Arguments
+    $page = intval($_POST['page']);
     $args = [
         'post_type'      => 'photo',
-        'posts_per_page' => -1,
-        'tax_query'      => count($tax_query) > 1 ? $tax_query : [],
+        'posts_per_page' => 8,
+        'paged'          => $page,
         'orderby'        => 'date',
-        'order'          => $order,
+        'order'          => 'DESC',
     ];
 
     $query = new WP_Query($args);
@@ -157,9 +139,88 @@ function load_filtered_posts() {
             </div>
         <?php }
         wp_reset_postdata();
-        wp_send_json_success(ob_get_clean());
+        $html = ob_get_clean();
+        wp_send_json_success($html);
     } else {
-        wp_send_json_error('No posts found');
+        wp_send_json_error('No more photos');
+    }
+}
+add_action('wp_ajax_load_more_photos', 'load_more_photos');
+add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
+
+// Load filtered posts via AJAX
+function load_filtered_posts() {
+    check_ajax_referer('ajax_nonce', 'nonce');
+
+    $category = sanitize_text_field($_POST['categorie']);
+
+    $args = [
+        'post_type'      => 'photo',
+        'posts_per_page' => -1,
+        'tax_query'      => [
+            [
+                'taxonomy' => 'categorie',
+                'field'    => 'slug',
+                'terms'    => $category,
+            ],
+        ],
+    ];
+
+    $format = sanitize_text_field($_POST['format']);
+
+    $args = [
+        'post_type'      => 'photo',
+        'posts_per_page' => -1,
+        'tax_query'      => [
+            [
+                'taxonomy' => 'format',
+                'field'    => 'slug',
+                'terms'    => $format,
+            ],
+        ],
+    ];
+
+    $sort = sanitize_text_field($_POST['date']);
+
+    $args = [
+        'post_type'      => 'date-sort',
+        'posts_per_page' => -1,
+        'tax_query'      => [
+            [
+                'taxonomy' => 'date-sort',
+                'field'    => 'slug',
+                'terms'    => $sort,
+            ],
+        ],
+    ];
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        ob_start();
+        while ($query->have_posts()) {
+            $query->the_post(); ?>
+            <div class="custom-post-thumbnail">
+                <a href="<?php the_permalink(); ?>">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <div class="thumbnail-wrapper">
+                            <?php the_post_thumbnail(); ?>
+                            <div class="thumbnail-overlay">
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/Icon_eye.png'); ?>" alt="Eye Icon">
+                                <button class="fullscreen-icon" data-src="<?php echo esc_url(wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]); ?>">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/Icon_fullscreen.png'); ?>" alt="Fullscreen Icon">
+                                </button>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </a>
+            </div>
+        <?php }
+        wp_reset_postdata();
+        $data = ob_get_clean();
+        wp_send_json_success($data);
+    } else {
+        wp_send_json_error();
     }
 }
 add_action('wp_ajax_load_filtered_posts', 'load_filtered_posts');
