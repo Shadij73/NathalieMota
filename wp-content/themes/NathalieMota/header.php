@@ -15,13 +15,8 @@
 
     <!-- Theme stylesheets -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/fonts.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/header.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/footer.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/index.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/liste-photo.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/lightbox.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/components.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/layout.css">
     <style>
         :root {
             --chemin-image-chevron: url('<?php echo get_template_directory_uri(); ?>/img_logo/chevron.png');

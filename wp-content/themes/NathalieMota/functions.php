@@ -11,13 +11,8 @@ add_action('after_setup_theme', 'register_menus');
 function enqueue_custom_styles() {
     $styles = [
         'style.css',
-        'css/fonts.css',
-        'css/header.css',
-        'css/footer.css',
-        'css/single.css',
-        'css/index.css',
-        'css/liste-photo.css',
-        'css/lightbox.css',
+        'css/layout.css',
+        'css/components.css',
     ];
 
     foreach ($styles as $style) {

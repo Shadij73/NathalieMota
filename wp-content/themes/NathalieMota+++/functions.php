@@ -11,13 +11,9 @@ add_action('after_setup_theme', 'register_menus');
 function enqueue_custom_styles() {
     $styles = [
         'style.css',
-        'css/fonts.css',
-        'css/header.css',
-        'css/footer.css',
-        'css/single.css',
-        'css/index.css',
-        'css/liste-photo.css',
-        'css/lightbox.css',
+        'css/layout.css',
+        'css/components.css',
+        
     ];
 
     foreach ($styles as $style) {
@@ -152,47 +148,41 @@ add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 function load_filtered_posts() {
     check_ajax_referer('ajax_nonce', 'nonce');
 
-    $category = sanitize_text_field($_POST['categorie']);
+    // Initialize tax_query array
+    $tax_query = ['relation' => 'AND'];
 
+    // Category Filter
+    if (!empty($_POST['categorie'])) {
+        $category = sanitize_text_field($_POST['categorie']);
+        $tax_query[] = [
+            'taxonomy' => 'categorie', // Make sure this is the correct taxonomy
+            'field'    => 'slug',
+            'terms'    => $category,
+        ];
+    }
+
+    // Format Filter
+    if (!empty($_POST['format'])) {
+        $format = sanitize_text_field($_POST['format']);
+        $tax_query[] = [
+            'taxonomy' => 'format', // Make sure this is the correct taxonomy
+            'field'    => 'slug',
+            'terms'    => $format,
+        ];
+    }
+
+    // Sorting
+    $order = isset($_POST['sort']) && in_array($_POST['sort'], ['ASC', 'DESC']) ? sanitize_text_field($_POST['sort']) : 'DESC';
+
+    // WP_Query Arguments
     $args = [
         'post_type'      => 'photo',
         'posts_per_page' => -1,
-        'tax_query'      => [
-            [
-                'taxonomy' => 'categorie',
-                'field'    => 'slug',
-                'terms'    => $category,
-            ],
-        ],
+        'tax_query'      => count($tax_query) > 1 ? $tax_query : [],
+        'orderby'        => 'date',
+        'order'          => $order,
     ];
 
-    $format = sanitize_text_field($_POST['format']);
-
-    $args = [
-        'post_type'      => 'photo',
-        'posts_per_page' => -1,
-        'tax_query'      => [
-            [
-                'taxonomy' => 'format',
-                'field'    => 'slug',
-                'terms'    => $format,
-            ],
-        ],
-    ];
-
-    $sort = sanitize_text_field($_POST['date']);
-
-    $args = [
-        'post_type'      => 'date-sort',
-        'posts_per_page' => -1,
-        'tax_query'      => [
-            [
-                'taxonomy' => 'date-sort',
-                'field'    => 'slug',
-                'terms'    => $sort,
-            ],
-        ],
-    ];
 
     $query = new WP_Query($args);
 

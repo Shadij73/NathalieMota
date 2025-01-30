@@ -1,0 +1,716 @@
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 962px;
+}
+
+.hero-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    position: relative;
+    background-image: url('/img_logo/background-hero.jpeg');
+}
+
+.hero-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+body {
+    font-family: 'Space Mono', sans-serif;
+    color: #000;
+    background-color: #FFFFFF;
+}
+
+/* Filters and Sort Section */
+.filters-and-sort {
+    display: flex;
+    justify-content: center; /* Center the filter list */
+    align-items: center;
+    max-width: 1126px;
+    margin: 50px auto 30px;
+    gap: 20px;
+    position: relative; /* Allow proper positioning in relation to the parent */
+    z-index: 10; /* Ensure it stays on top */
+}
+
+.filter-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 260px;
+    height: 43px;
+    padding: 0 18px;
+    border-radius: 8px;
+    border: 1.3px solid #B8BBC2;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    cursor: pointer;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.filter-list select {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    padding-left: 8px;
+}
+
+.filter-list:hover {
+    border-color: #215AFF;
+}
+
+/* Load More Posts Button */
+#load-more-posts {
+    width: 272px;
+    height: 50px;
+    background-color: #D8D8D8;
+    color: #000;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-family: "Space Mono", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 30px auto 0; /* Center the button and add top margin */
+}
+
+#load-more-posts:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Photo Gallery */
+.custom-post-thumbnails {
+    max-width: 1126px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.thumbnail-container-accueil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px; /* Reduced space between photos */
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.custom-post-thumbnail {
+    flex-basis: calc(50% - 8px); /* Adjusted for even less space */
+    margin-bottom: 8px; /* Less vertical space */
+    border-radius: 8px;
+}
+
+.thumbnail-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 66%;
+    border-radius: 8px;
+}
+
+.thumbnail-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.thumbnail-wrapper:hover .thumbnail-overlay {
+    opacity: 1;
+}
+
+.thumbnail-overlay img {
+    width: 46px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Responsive: Add Vertical Space Between Photos */
+@media (max-width: 768px) {
+    .filters-and-sort {
+        flex-direction: column;
+        align-items: center; /* Center the filter list */
+        margin-top: 30px;
+    }
+
+    .filter-list {
+        width: 220px;
+        margin-bottom: 20px;
+    }
+
+    .filter-list.select-date-sort {
+        margin-left: 0;
+    }
+
+    .view-all-button {
+        margin-top: 30px;
+    }
+
+    /* Ensure Vertical Space Between Photos */
+    .thumbnail-container-accueil {
+        flex-direction: column;
+        gap: 12px; /* Even less space between photos */
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 80px; /* Added more space for the button */
+    }
+
+    .custom-post-thumbnail {
+        flex-basis: 100%;
+        margin-bottom: 10px; /* Reduced vertical spacing */
+    }
+
+    .thumbnail-wrapper {
+        margin-bottom: 12px; /* More separation between photos */
+    }
+
+    /* Adjust button on mobile */
+    #load-more-posts {
+        width: 90%; /* Makes the button width responsive */
+        max-width: 272px; /* Keeps max-width */
+    }
+}
+
+/* Responsive: Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .thumbnail-container-accueil {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px; /* Reduced space between photos for tablet */
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 80px; /* Ensures space for the button */
+    }
+
+    .custom-post-thumbnail {
+        flex-basis: calc(50% - 8px); /* Less space between items */
+        margin-bottom: 20px; /* Adjusted bottom space */
+    }
+
+    .thumbnail-wrapper {
+        margin-bottom: 30px; /* Keep spacing correct */
+    }
+
+    /* Adjust filter list position */
+    .filters-and-sort {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%); /* Centers the filter list */
+        z-index: 10;
+    }
+}
+
+
+/* Google Fonts */
+h1, h2, h3 {
+    font-family: 'Space Mono', monospace;
+}
+
+h1 {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 142px;
+}
+
+h2 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 66px;
+    line-height: 58px;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+/* Footer */
+.footer-menu {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #000;
+    padding-top: 10px;
+}
+
+.footer-menu li {
+    margin: 0 15px;
+    display: inline;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    padding-top: 5px;
+}
+
+.footer-menu li a:hover {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* MODAL HEADER */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.822);
+    overflow: auto;
+}
+
+.modal-content {
+    position: fixed;
+    border: 5px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 597px;
+    max-width: 80%;
+    height: 769px;
+    background-color: #fff;
+    padding-top: 15px;
+}
+
+.modal-content img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* MODAL SINGLE */
+.modal-photo {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.822);
+    overflow: auto;
+}
+
+/* CONTACT FORM 7 */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+input, select, textarea {
+    border: none;
+    border-radius: 7px;
+}
+
+input[type=submit] {
+    width: 285px;
+    height: 50px;
+    padding: 8px 15px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: "Space Mono";
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #D8D8D8;
+    color: #000000;
+}
+
+input[type=submit]:hover {
+    background-color: black;
+    color: #fff;
+}
+
+/* MEDIA FOOTER */
+@media (max-width: 768px) {
+    .menu li {
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+}
+
+/* BODY */
+body {
+    background-color: #FFFFFF;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* ✅ FIX: SPACING BETWEEN PHOTOS ON MOBILE */
+@media (max-width: 768px) {
+    .thumbnail-container-accueil {
+        flex-direction: column;
+        gap: 100px !important; /* Maximum spacing between photos */
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .custom-post-thumbnail {
+        flex-basis: 100%;
+        margin-bottom: 100px !important; /* Large space between images */
+    }
+
+    .thumbnail-wrapper {
+        margin-bottom: 120px !important; /* Maximum space between images */
+    }
+}
+
+/* ✅ TABLET RESPONSIVENESS (Keep Layout as Before) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .thumbnail-container-accueil {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px !important; /* Keep spacing balanced */
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .custom-post-thumbnail {
+        flex-basis: calc(50% - 15px); /* Ensure two columns in tablet */
+        margin-bottom: 50px !important; /* Keep space but not too large */
+    }
+
+    .thumbnail-wrapper {
+        margin-bottom: 50px !important; /* Keep spacing correct */
+    }
+}
+
+/* Header Styles */
+main {
+    padding: 20px;
+    font-family: 'Space Mono';
+    margin-top: 20px;
+}
+
+.main-content-post {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: #fff;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.header-logo img {
+    max-width: 300px;
+    width: 216px;
+    height: 14px;
+}
+
+.logo-container img {
+    padding-left: 10px;
+    padding-top: 35px;
+    width: 212px;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-menu li a,
+.footer-menu li a,
+#open-modal-button-header,
+.close {
+    text-decoration: none;
+    color: #000;
+    font-family: "Space Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23.7px;
+    letter-spacing: 0.1em;
+    text-align: left;
+    text-transform: uppercase;
+    margin-right: 40px;
+}
+
+.header-menu ul,
+.footer-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li,
+.footer-menu li {
+    margin-right: 20px;
+}
+
+.header-menu li a:hover {
+    font-family: "Space Mono", monospace;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* BURGER MENU */
+.mobile-menu-button {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.bar {
+    display: block;
+    width: 27.42px;
+    height: 2px;
+    margin: 5px auto;
+    background-color: #000;
+    transition: 0.4s;
+}
+
+/* MEDIA */
+@media (max-width: 768px) {
+    header {
+        height: 72px;
+        margin-left: 40px;
+        margin-right: 40px;    
+    }
+
+    .header-logo,
+    .header-logo img {
+        margin-bottom: 6px;
+    }
+
+    .mobile-menu-button {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .header-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%; 
+        max-height: 100vh;
+        background-color: #fff;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+        z-index: 1000;
+        overflow-y: auto;
+        width: 375px !important;
+    }
+
+    .mobile-menu-opened .header-menu {
+        transform: translateX(0%);
+    }
+
+    .close-button {
+        position: absolute;
+        font-family: "Space Mono", monospace;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: #000;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
+
+    .close-button-container {
+        width: 100%;
+        height: 86px;
+        background: white;
+        position: absolute;
+        top: 0;
+    }
+
+    .header-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        margin-left: 50px;
+    }
+
+    .footer-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        text-align: center;
+        flex-flow: column;
+    }
+
+    .mobile-menu-opened .header-menu {
+        background: #E00000;
+        height: 110vh;
+        left: 0;
+        top: 0;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .header-menu li a,
+    #open-modal-button-header {
+        font-family: 'Space Mono' !important;
+        font-weight: 400!important;
+        font-size: 44px!important;
+        line-height: 65px!important;
+        text-align: center!important;
+        text-transform: uppercase!important;
+        color: #FFFFFF!important;
+        transition: font-weight 0.3s ease!important;
+    }
+
+    #open-modal-button-header {
+        margin-left: 30px;
+    }
+
+    .header-menu li {
+        width: 100%; 
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+
+    .header-menu li a {
+        color: #FFFFFF; 
+        font-size: 44px; 
+        font-weight: 400;
+        transition: font-weight 0.3s ease;
+    }
+
+    .header-menu li a:hover,
+    #open-modal-button-header:hover {
+        font-family: 'Space Mono';
+        font-weight: 400;
+        font-size: 44px;
+        line-height: 65px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        transition: font-weight 0.3s ease;
+    }
+
+    .close-button {
+        color: #000000;
+        font-size: 23px;
+        position: absolute;
+        top: 22px;
+        right: 30px;
+    }
+
+    body.mobile-menu-opened {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .header-menu li {
+        margin-bottom: 20px;
+    }
+
+    .logo-container {
+        display: block;
+    }
+
+    .close-button {
+        display: block;
+    }
+
+    .hero {
+        height: 250px !important;
+    }
+
+    .hero-image img {
+        width: 288px;
+        height: 41px;
+    }
+
+    #menu-header li {
+        margin-top: auto;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .logo-container {
+        display: none;
+    }
+
+    .close-button {
+        display: none;
+    }
+}
