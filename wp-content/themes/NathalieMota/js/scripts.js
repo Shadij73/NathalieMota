@@ -15,38 +15,38 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // HEADER MODAL
-    const headerModal = document.getElementById('myModal');
-    const headerBtn = document.querySelector('.menu-item-27');
-    if (headerModal && headerBtn) {
-        headerBtn.addEventListener('click', function (event) {
-            event.preventDefault();
-            headerModal.style.display = 'block';
-        });
+    // UNIFIED MODAL HANDLING
+    function setupModal(modalId, buttonSelector) {
+        let modal = document.getElementById(modalId);
+        let button = document.querySelector(buttonSelector);
 
-        window.addEventListener('click', function (event) {
-            if (event.target === headerModal) {
-                headerModal.style.display = 'none';
-            }
-        });
+        if (modal && button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                modal.classList.add('show');
+            });
+
+            modal.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        }
     }
 
-    // PHOTO MODAL
+    // Apply unified modal function to both modals
+    setupModal('myModal', '.menu-item-27'); // Header modal
+    setupModal('myModal-photo', '#myBtn-photo'); // Photo modal
+
+    // Ensure "your-subject" input is populated correctly in photo modal
     const photoModal = document.getElementById('myModal-photo');
     const photoBtn = document.getElementById('myBtn-photo');
     if (photoModal && photoBtn) {
         const referenceInput = photoModal.querySelector('input[name="your-subject"]');
         photoBtn.addEventListener('click', function () {
-            photoModal.style.display = 'block';
             const referenceText = this.getAttribute('data-reference');
             if (referenceInput) {
                 referenceInput.value = referenceText;
-            }
-        });
-
-        window.addEventListener('click', function (event) {
-            if (event.target === photoModal) {
-                photoModal.style.display = 'none';
             }
         });
     }
@@ -135,11 +135,11 @@ document.addEventListener('DOMContentLoaded', function () {
     jQuery(function ($) {
         function loadFilteredPosts() {
             const category = $('#category-filter-list').val();
-            const format = $('#format-filter-list').val(); // Optional format filter
-            const sort = $('#date-sort').val(); // Optional sorting option
-            const ajaxurl = ajax_object.ajax_url; // Use the localized AJAX URL
-            const nonce = ajax_object.nonce; // Use the localized nonce for security
-            console.log(category,format,sort);
+            const format = $('#format-filter-list').val();
+            const sort = $('#date-sort').val();
+            const ajaxurl = ajax_object.ajax_url;
+            const nonce = ajax_object.nonce;
+
             $.ajax({
                 url: ajaxurl,
                 type: 'POST',
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 success: function (response) {
                     if (response.success) {
-                        $('.thumbnail-container-accueil').html(response.data); // Update the photo container with filtered photos
+                        $('.thumbnail-container-accueil').html(response.data);
                     } else {
                         $('.thumbnail-container-accueil').html('<p>No photos found.</p>');
                     }

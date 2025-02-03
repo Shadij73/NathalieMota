@@ -52,7 +52,6 @@ body {
     align-items: center;
     max-width: 1126px;
     margin: 50px auto 30px;
-    gap: 20px;
 }
 
 .filter-list {
@@ -133,7 +132,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 24px;
+    gap: 10px;
     margin-top: 20px;
     margin-left: 100px;
     margin-right: 100px;
@@ -141,7 +140,7 @@ body {
 
 .custom-post-thumbnail {
     flex-basis: calc(50% - 24px);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     border-radius: 8px;
 }
 
@@ -225,7 +224,7 @@ body {
 @media (max-width: 768px) {
     .filters-and-sort {
         flex-direction: column;
-        align-items: flex-start;
+        justify-items: center;
         margin-top: 30px;
     }
 
@@ -245,14 +244,9 @@ body {
     /* Ensure Vertical Space Between Photos */
     .thumbnail-container-accueil {
         flex-direction: column;
-        gap: 30px; /* Adds vertical space between photos */
+        gap: 10px; /* Adds vertical space between photos */
         margin-left: 20px;
         margin-right: 20px;
-    }
-
-    .custom-post-thumbnail {
-        flex-basis: 100%;
-        margin-bottom: 40px; /* Extra vertical spacing */
     }
 
     .thumbnail-wrapper {
@@ -300,7 +294,7 @@ p {
     padding-top: 10px;
 }
 .footer-menu li {
-    margin: 0 15px;
+    margin: -20px 15px;
     display: inline;
 }
 .footer-menu a {

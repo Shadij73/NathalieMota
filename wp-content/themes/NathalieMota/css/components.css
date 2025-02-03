@@ -14,7 +14,7 @@
     padding: 0;
 }
 
-.header-menu li, .footer-menu li { margin-right: 20px; }
+.header-menu li, .footer-menu li { margin-right: -5px; }
 .header-menu li a:hover { font-weight: 700; }
 
 .modal, .modal-photo {
@@ -103,10 +103,9 @@ body { background: #FFF; margin: 0; font: 400 16px "Space Mono", sans-serif; col
 @media (max-width: 768px) {
     .thumbnail-container-accueil {
         flex-direction: column;
-        gap: 100px;
+        gap: 35px;
         margin: 20px;
     }
-    .custom-post-thumbnail { flex-basis: 100%; margin-bottom: 100px; }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -116,33 +115,21 @@ body { background: #FFF; margin: 0; font: 400 16px "Space Mono", sans-serif; col
         gap: 30px;
         margin: 50px;
     }
-    .custom-post-thumbnail { flex-basis: calc(50% - 15px); margin-bottom: 50px; }
 }
-
-    .thumbnail-wrapper {
-        margin-bottom: 120px !important; /* Maximum space between images */
-    }
 
 
 /* ✅ TABLET RESPONSIVENESS (Keep Layout as Before) */
 @media (min-width: 769px) and (max-width: 1024px) {
     .thumbnail-container-accueil {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
+        flex-wrap: nowrap;
         justify-content: space-between;
-        gap: 30px !important; /* Keep spacing balanced */
-        margin-left: 50px;
-        margin-right: 50px;
+        gap: 20px !important; /* Keep spacing balanced */
+        margin-left: 40px;
+        margin-right: 40px;
     }
 
-    .custom-post-thumbnail {
-        flex-basis: calc(50% - 15px); /* Ensure two columns in tablet */
-        margin-bottom: 50px !important; /* Keep space but not too large */
-    }
 
-    .thumbnail-wrapper {
-        margin-bottom: 50px !important; /* Keep spacing correct */
-    }
 }
 
 
@@ -163,8 +150,8 @@ header {
     align-items: center;
     height: 80px;
     background-color: #fff;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 75px;
+    margin-right: 75px;
 
 }
 
@@ -175,7 +162,7 @@ header {
 }
 
 .logo-container img {
-    padding-left: 10px;
+    padding-left: 24px;
     padding-top: 35px;
     width: 212px;
 }
@@ -183,7 +170,10 @@ header {
 .header-menu {
     display: flex;
     align-items: center;
-    padding: 20px;
+    gap: 20px; /* Better spacing between items */
+    padding: 0px;
+    justify-content: space-between; /* Ensures proper alignment */
+    flex-wrap: nowrap;
 }
 
 /* BURGER MENU */
@@ -271,10 +261,12 @@ header {
         margin: 0;
         padding: 0;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
         text-align: center;
         margin-left: 50px;
+        display: flex;
+        flex-direction: column;
     }
 
     .footer-menu ul {
@@ -282,7 +274,7 @@ header {
         margin: 0;
         padding: 0;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         justify-content: center;
         text-align: center;
         flex-flow: column;
@@ -978,13 +970,7 @@ header {
       font-size: 14px;
     }
 
-    .zone-contenu,
-    .zone-contact,
-    .left-container,
-    .right-container {
-        flex-basis: 100%;
-        max-width: 100%;
-    }
+
 
     .left-container h1 {
         font-size: 44px;
