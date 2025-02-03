@@ -6,7 +6,7 @@
         $photo_categories = get_terms('categorie'); // Replace 'categorie' with your taxonomy name if different
         ?>
         <select name="category-list" id="category-filter-list">
-            <option value="ALL" selected>CATÉGORIES</option>
+            <option value="" selected>CATÉGORIES</option>
             <?php
             if (!is_wp_error($photo_categories) && !empty($photo_categories)) {
                 foreach ($photo_categories as $category) {
@@ -25,7 +25,7 @@
         $photo_formats = get_terms('format'); // Replace 'format' with your taxonomy name if different
         ?>
         <select name="format-list" id="format-filter-list">
-            <option value="ALL" selected>FORMATS</option>
+            <option value="" selected>FORMATS</option>
             <?php
             if (!is_wp_error($photo_formats) && !empty($photo_formats)) {
                 foreach ($photo_formats as $format) {
@@ -41,7 +41,7 @@
     <!-- Sort Filter -->
     <div class="filter-list">
         <select id="date-sort" name="date-sort">
-            <option value="ALL" selected>TRIER PAR</option>
+            <option value="" selected>TRIER PAR</option>
             <option value="DESC">À partir des plus récentes</option>
             <option value="ASC">À partir des plus anciennes</option>
         </select>

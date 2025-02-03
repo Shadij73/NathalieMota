@@ -136,10 +136,10 @@ document.addEventListener('DOMContentLoaded', function () {
         function loadFilteredPosts() {
             const category = $('#category-filter-list').val();
             const format = $('#format-filter-list').val(); // Optional format filter
-            const sort = $('#date-sort-list').val(); // Optional sorting option
+            const sort = $('#date-sort').val(); // Optional sorting option
             const ajaxurl = ajax_object.ajax_url; // Use the localized AJAX URL
             const nonce = ajax_object.nonce; // Use the localized nonce for security
-
+            console.log(category,format,sort);
             $.ajax({
                 url: ajaxurl,
                 type: 'POST',
