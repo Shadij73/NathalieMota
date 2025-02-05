@@ -45,13 +45,15 @@ body {
     color: #000;
     background-color: #FFFFFF;
 }
-
+/* Base Styles */
 .filters-and-sort {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    max-width: 1126px;
-    margin: 50px auto 30px;
+    margin: 45px 90px;
+    padding: 30px 30px 30px 25px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .filter-list {
@@ -93,6 +95,44 @@ body {
     border-color: #215AFF;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .filters-and-sort {
+        flex-direction: column;
+        margin: 30px 50px;
+    }
+
+    .filter-list {
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 14px;  /* Adjust font size for better readability */
+    }
+
+    .filter-list.select-date-sort {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .filters-and-sort {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 15px;
+        margin: 20px 30px;
+    }
+
+    .filter-list {
+        width: 100%;
+        margin-bottom: 12px;
+        font-size: 14px;  /* Increase font size for better readability */
+    }
+
+    .filter-list.select-date-sort {
+        margin-left: 0;
+    }
+}
+
+
 .view-all-button {
     display: flex;
     justify-content: center;
@@ -132,7 +172,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 10px;
+    gap: 20px;
     margin-top: 20px;
     margin-left: 100px;
     margin-right: 100px;
@@ -147,7 +187,7 @@ body {
 .thumbnail-wrapper {
     position: relative;
     overflow: hidden;
-    padding-bottom: 66%;
+    aspect-ratio: 16 / 9; /* Prevents overly tall images */
     border-radius: 8px;
 }
 
@@ -220,7 +260,7 @@ body {
     background-color: #000;
 }
 
-/* Responsive: Add Vertical Space Between Photos */
+/* Responsive: Adjust Vertical Space Between Photos */
 @media (max-width: 768px) {
     .filters-and-sort {
         flex-direction: column;
@@ -241,16 +281,21 @@ body {
         margin-top: 30px;
     }
 
-    /* Ensure Vertical Space Between Photos */
     .thumbnail-container-accueil {
         flex-direction: column;
-        gap: 10px; /* Adds vertical space between photos */
+        gap: 15px;
         margin-left: 20px;
         margin-right: 20px;
     }
 
+    .custom-post-thumbnail {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
     .thumbnail-wrapper {
-        margin-bottom: 20px; /* More separation between photos */
+        aspect-ratio: 16 / 9;
+        margin-bottom: 15px;
     }
 }
 
@@ -283,26 +328,29 @@ p {
     line-height: 21px;
 }
 
-/* Footer */
 .footer-menu {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 23px;
     display: flex;
+    flex-direction: column; /* Stack items vertically */
     justify-content: center;
     align-items: center;
     border-top: 2px solid #000;
-    padding-top: 10px;
+    padding: 31px;
+    gap: 15px; /* Adjust space between items */
 }
+
 .footer-menu li {
-    margin: -20px 15px;
-    display: inline;
+    margin-bottom: 10px; /* Additional spacing between list items */
+    display: block;
 }
+
 .footer-menu a {
     text-decoration: none;
     padding-top: 5px;
 }
+
 .footer-menu li a:hover {
     font-size: 16px;
     font-weight: 700;
 }
-
