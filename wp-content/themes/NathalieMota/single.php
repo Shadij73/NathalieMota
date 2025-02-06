@@ -68,14 +68,23 @@
             $prev_post = $all_photo_posts[$current_index - 1] ?? end($all_photo_posts);
             $next_post = $all_photo_posts[$current_index + 1] ?? reset($all_photo_posts);
             ?>
-            <div class="thumbnail-container">
-                <a href="<?php echo esc_url(get_permalink($prev_post)); ?>" class="arrow-link">
-                    <img class="arrow-img-gauche" src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/fleche-gauche.png'); ?>" alt="Précédent">
-                </a>
-                <a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="arrow-link">
-                    <img class="arrow-img-droite" src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/fleche-droite.png'); ?>" alt="Suivant">
-                </a>
-            </div>
+<div class="thumbnail-container">
+    <a href="<?php echo esc_url(get_permalink($prev_post)); ?>" class="arrow-link">
+        <img class="arrow-img arrow-img-gauche" src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/fleche-gauche.png'); ?>" alt="Précédent">
+    </a>
+
+    <!-- Display current post thumbnail -->
+    <div class="current-thumbnail">
+        <?php if (has_post_thumbnail()) : ?>
+            <?php the_post_thumbnail('thumbnail', ['class' => 'post-thumbnail']); ?>
+        <?php endif; ?>
+    </div>
+
+    <a href="<?php echo esc_url(get_permalink($next_post)); ?>" class="arrow-link">
+        <img class="arrow-img arrow-img-droite" src="<?php echo esc_url(get_template_directory_uri() . '/img_logo/fleche-droite.png'); ?>" alt="Suivant">
+    </a>
+</div>
+
         </div>
     </div>
 

@@ -354,3 +354,17 @@ p {
     font-size: 16px;
     font-weight: 700;
 }
+
+.thumbnail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.current-thumbnail img {
+    width: 81px; /* Adjust size as needed */
+    height: 71px;
+    display: block;
+
+}
